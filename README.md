@@ -1,6 +1,6 @@
 # Job Shop – der Konvergenzpunkt dieser Linie – Streamlit-Demo
 
-**[→ Demo live ausprobieren](#) (Deploy offen)**
+**[→ Demo live ausprobieren](https://sebastianhanisch-job-shop-demo.streamlit.app/)**
 
 Achtes Stück der **Klassische-Scheduling-Theorie-Linie** der "Konzepte"-Reihe für die Website "Sebastian Hanisch
 – Operations Research und Machine Learning": $n$ Aufträge, $m$ Maschinen, JEDER Auftrag besucht jede Maschine
