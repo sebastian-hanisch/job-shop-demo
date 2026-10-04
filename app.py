@@ -4,8 +4,8 @@ Sebastian Hanisch - Operations Research und Machine Learning
 Achtes Stück der neuen Konzepte-Linie "Klassische Scheduling-Theorie": n Aufträge, m Maschinen, JEDER Auftrag
 besucht jede Maschine genau einmal, aber in AUFTRAGSEIGENER Reihenfolge - Reihenfolge (Stück 1-5), serielle
 Maschinen (Stück 6) und parallele Maschinen (Stück 7) kommen hier zusammen. Stark NP-schwer. Giffler-Thompson
-(1960) konstruiert AKTIVE Zeitpläne per Prioritätsregel; MWKR (Most Work Remaining) ist die beste einfache Regel
-für Cmax hier - SPT (die Wurzel dieser Linie!) schneidet überraschend SCHLECHTER ab als sogar FIFO. Siehe README
+(1960) konstruiert AKTIVE Zeitpläne per Prioritätsregel; MWKR (Most Work Remaining) ist hier empirisch die beste einfache Regel
+für Cmax - SPT (die Wurzel dieser Linie!) schneidet überraschend SCHLECHTER ab als sogar FIFO. Siehe README
 für die Einordnung in die Linie.
 
 Lauffähig mit: streamlit run app.py
@@ -178,7 +178,7 @@ st.markdown("---")
 
 st.markdown("## 🎯 Was die Prioritätsregel bringt")
 vehicle_note = " Auf dem Werkstatt/Logistik-Vehikel zählt die Rüstzeit je Maschine mit - keine Regel kennt sie, alle Zahlen hier berücksichtigen sie trotzdem." if vehicle == "logistik" else ""
-st.caption(f"**Abstand:** Cmax einer Regel gegenüber MWKR in Prozent - kann negativ werden, MWKR ist keine bewiesen optimale Regel, nur eine bewiesen GUTE innerhalb eines Suchraums, der bewiesen das Optimum enthält.{vehicle_note}")
+st.caption(f"**Abstand:** Cmax einer Regel gegenüber MWKR in Prozent - kann negativ werden, MWKR ist keine bewiesen optimale Regel, nur eine empirisch gute; bewiesen ist lediglich, dass der Suchraum der aktiven Zeitpläne das Optimum enthält.{vehicle_note}")
 m1, m2, m3, m4, m5 = st.columns(5)
 m1.metric("MWKR (Cmax)", _fmt_int(a.mwkr.cmax), help="Die Zielgröße: Gesamtdurchlaufzeit mit der Most-Work-Remaining-Regel, auf dem gewählten Vehikel.")
 m2.metric("SPT (Wurzel dieser Linie!)", _fmt_pct(a.gap_spt), delta_color="off", help="SPT war für Stück 1 dieser Linie beweisbar optimal - hier, im Job Shop mit Cmax-Ziel, schneidet es überraschend schlecht ab.")
