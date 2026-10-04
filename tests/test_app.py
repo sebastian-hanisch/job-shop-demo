@@ -36,7 +36,7 @@ def test_default_run_has_no_exception_and_shows_the_measured_default():
     assert _metric(at, "SPT (Wurzel dieser Linie!)") == "+47.0 %"
     assert _metric(at, "FIFO (naiv)") == "+9.2 %"
     assert _metric(at, "Zufällige Priorität (Mittel über 20)") == "+7.6 %"
-    assert any("MWKR ist" in s.value for s in at.success)
+    assert any("über dem von MWKR" in s.value for s in at.success)
 
 
 def test_switching_to_the_logistik_vehicle_actually_changes_the_main_metric():
@@ -94,7 +94,7 @@ def test_exact_limit_is_respected_in_the_metric():
     assert proven_metric is not None or timeout_metric is not None
     at2 = _run(n_slider=C.EXACT_MAX_N + 1)
     _ok(at2)
-    assert "erst ab n" in _metric(at2, "CP-SAT")
+    assert "nur bis n" in _metric(at2, "CP-SAT")
 
 
 def test_dice_buttons_change_the_seeds():

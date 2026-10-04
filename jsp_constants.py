@@ -43,7 +43,7 @@ PRESETS = {
 }
 # Werte in PRESET_HELP nach der Messreihe (jsp_evaluation.run_config) final eingetragen.
 PRESET_HELP = {
-    "Standardfall (Voreinstellung)": f"{DEFAULT_N} Aufträge auf {DEFAULT_M} Maschinen, jeder mit eigener Reihenfolge: Giffler-Thompson mit SPT misst sich gegen dieselbe Konstruktion mit FIFO und gegen Zufall.",
+    "Standardfall (Voreinstellung)": f"{DEFAULT_N} Aufträge auf {DEFAULT_M} Maschinen, jeder mit eigener Reihenfolge: Giffler-Thompson mit MWKR misst sich gegen SPT, gegen dieselbe Konstruktion mit FIFO und gegen Zufall.",
     "Kleine Instanz (CP-SAT sichtbar)": f"{EXACT_MAX_N} Aufträge: hier löst CP-SAT (OR-Tools) das Problem exakt mit.",
     "Große Instanz (Skalierung)": f"{N_MAX} Aufträge: Giffler-Thompson bleibt schnell, eine exakte Lösung wäre bei dieser Größe aussichtslos.",
     "Werkstatt/Logistik-Vehikel": "Dieselben Aufträge, aber in Familien mit Rüstzeit beim Wechsel je Maschine - die Prioritätsregeln kennen diese Rüstzeiten nicht.",

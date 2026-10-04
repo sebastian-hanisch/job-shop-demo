@@ -25,8 +25,8 @@ LPT (Pm||Cmax, parallele Maschinen, bewiesene Worst-Case-Garantie)              
        Shifting-Bottleneck, Job-Shop-Tabu-Search (SOTA-Folgestücke)
 ```
 
-Ergebnis in Kürze: bei 10 Aufträgen auf 4 Maschinen liegt **MWKR** (Most Work Remaining) im Mittel **44 %** unter
-SPT, **20 %** unter FIFO und **25 %** unter einer zufälligen Priorität. **Der überraschendste Befund dieses
+Ergebnis in Kürze: bei 10 Aufträgen auf 4 Maschinen liegt der Cmax-Wert bei SPT im Mittel **44 %**, bei FIFO **20 %** und bei einer zufälligen Priorität **25 %** über dem von **MWKR**
+(Most Work Remaining). **Der überraschendste Befund dieses
 Stücks**: SPT - die WURZEL dieser ganzen Linie, für $1||\sum C_j$ beweisbar optimal - schneidet hier, im Job
 Shop mit $C_{\max}$-Ziel, systematisch SCHLECHTER ab als sogar die naive FIFO-Regel. SPT lässt lange Aufträge
 konsequent bis zuletzt liegen, was bei der Gesamtdurchlaufzeit hart bestraft wird - ein ehrlicher Rückblick auf
@@ -39,7 +39,7 @@ Optimum zwischen 13 % und 20 % über den gesamten Rüstzeit-Bereich - nicht saub
 
 | Frage | Ergebnis (Mittel über 5 feste Instanzen, Seeds 100000–100004, mit je 3 Ketten-Seeds) |
 |---|---|
-| Standardfall (10 Aufträge, 4 Maschinen) | ✅ MWKR liegt **44 %** unter SPT, **20 %** unter FIFO, **25 %** unter Zufall |
+| Standardfall (10 Aufträge, 4 Maschinen) | ✅ Cmax liegt bei SPT **44 %**, bei FIFO **20 %**, bei Zufall **25 %** über dem von MWKR |
 | **SPT (Wurzel dieser Linie) im Job Shop** | ❌ Systematisch SCHLECHTER als FIFO - eine echte, ernüchternde Umkehr |
 | **Beweis über den Suchraum (n=2..6)** | ✅ **100 %** - aktive Zeitpläne enthalten IMMER das Optimum |
 | **MWKR allein trifft das Optimum** | ❌ Fällt bis auf **0 %** bei n=4 - eine Regel ist etwas anderes als der volle Suchraum |
@@ -154,6 +154,4 @@ pytest tests/ -v
 
 ---
 
-Teil des [Operations-Research-Demo-Portfolios](https://sebastianhanisch.net/demos.html) von
-[Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning.
-Interesse an einer maßgeschneiderten Lösung? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html).
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Scheduling-Theorie: SPT bis RCPSP](https://sebastianhanisch.net/konzepte-klassische-scheduling-theorie.html).

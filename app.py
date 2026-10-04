@@ -114,7 +114,7 @@ with st.sidebar:
         st.session_state[KEPT["setup_time_slider"]] = setup_time
         seed_widget("n_families_slider")
         n_families = st.slider("Auftragsfamilien", *bounds("n_families_slider"), key="n_families_slider",
-                                help="Weniger Familien bei gleicher Auftragszahl bedeutet mehr Wechsel und damit mehr Rüstzeit insgesamt.")
+                                help="Mehr Familien bei gleicher Auftragszahl bedeuten mehr Wechsel und damit mehr Rüstzeit insgesamt.")
         st.session_state[KEPT["n_families_slider"]] = n_families
     else:
         setup_time = int(st.session_state.get(KEPT["setup_time_slider"], C.DEFAULT_SETUP_TIME))
@@ -190,16 +190,16 @@ if a.optimal is not None and a.optimal_proven:
 elif a.optimal is not None:
     m5.metric("CP-SAT", "Zeitlimit erreicht", delta_color="off", help="CP-SAT hat innerhalb des Zeitlimits keine bewiesen optimale Lösung gefunden.")
 else:
-    m5.metric("CP-SAT", f"erst ab n ≤ {C.EXACT_MAX_N}", delta_color="off", help="Bei dieser Größe wäre eine exakte Lösung aussichtslos.")
+    m5.metric("CP-SAT", f"nur bis n ≤ {C.EXACT_MAX_N}", delta_color="off", help="Bei dieser Größe wäre eine exakte Lösung aussichtslos.")
 
 if a.gap_spt < 0 or a.gap_fifo < 0 or a.gap_random < 0:
     candidates = [("SPT", a.gap_spt), ("FIFO", a.gap_fifo), ("eine zufällige Priorität", a.gap_random)]
     worse_than, worst_gap = min(candidates, key=lambda c: c[1])
     vehicle_hint = " (hier zusätzlich durch Rüstzeiten, die keine Regel kennt)" if vehicle == "logistik" else ""
-    st.warning(f"⚠️ MWKR schneidet hier sogar schlechter ab als {worse_than}: {abs(worst_gap):.1f} % mehr{vehicle_hint}. Kein Fehler - der Beweis gilt für den SUCHRAUM aktiver Zeitpläne (siehe CP-SAT-Feld und 🔬 unten), nicht für MWKR als Regel gegenüber einer bestimmten anderen Regel auf genau dieser Instanz. Das kann auch OHNE Rüstzeiten vorkommen.")
+    st.warning(f"⚠️ MWKR schneidet hier sogar schlechter ab als {worse_than}: Der Cmax-Wert liegt dort {abs(worst_gap):.1f} % unter dem von MWKR{vehicle_hint}. Kein Fehler - der Beweis gilt für den SUCHRAUM aktiver Zeitpläne (siehe CP-SAT-Feld und 🔬 unten), nicht für MWKR als Regel gegenüber einer bestimmten anderen Regel auf genau dieser Instanz. Das kann auch OHNE Rüstzeiten vorkommen.")
 else:
     tail = " (auch mit Rüstzeiten - bei dieser Instanz trifft MWKR trotzdem das Optimum, das ist nicht garantiert)" if vehicle == "logistik" and a.optimal is not None and a.mwkr_matches_optimum else ""
-    st.success(f"✅ MWKR ist {a.gap_spt:.1f} % besser als SPT, {a.gap_fifo:.1f} % besser als FIFO und {a.gap_random:.1f} % besser als eine zufällige Priorität{tail}.")
+    st.success(f"✅ Der Cmax-Wert liegt bei SPT {a.gap_spt:.1f} %, bei FIFO {a.gap_fifo:.1f} % und bei einer zufälligen Priorität {a.gap_random:.1f} % über dem von MWKR{tail}.")
 
 st.markdown("---")
 
@@ -301,6 +301,6 @@ Zeitpläne, CP-SAT), `jsp_scenario.py`/`jsp_scenario_logistik.py` (die zwei Vehi
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Scheduling-Theorie: SPT bis RCPSP](https://sebastianhanisch.net/konzepte-klassische-scheduling-theorie.html)."
 )
