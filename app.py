@@ -83,7 +83,7 @@ with st.expander("So funktioniert Giffler-Thompson", expanded=True):
 2. **Frühesten Konflikt finden.** Unter allen Kandidaten die kleinste mögliche Fertigstellungszeit $C^*$ auf ihrer Maschine $M^*$ - alle Kandidaten für $M^*$, die vor $C^*$ starten könnten, bilden den "Konfliktsatz".
 3. **Per Priorität entscheiden.** Aus dem Konfliktsatz den Auftrag mit der höchsten Priorität wählen - MWKR: die meiste verbleibende Arbeit zuerst.
 4. **Warum das einen SICHEREN Suchraum ergibt.** Jede so konstruierte Lösung ist ein "aktiver" Zeitplan; Giffler & Thompson (1960) beweisen: unter ALLEN aktiven Zeitplänen ist mindestens einer optimal - kein Optimum geht verloren, egal welche Prioritätsregel man verwendet.
-5. **Die Grenze der Annahme.** Keine Prioritätsregel kennt Rüstzeiten. Das Vehikel „Werkstatt/Logistik“ prüft, was passiert, wenn ein Familienwechsel auf einer Maschine zusätzlich Zeit kostet.
+5. **Die Grenze der Annahme.** Keine Prioritätsregel kennt Rüstzeiten. Das Vehikel „Werkstatt/Logistik“ prüft, was passiert, wenn ein Familienwechsel auf einer Maschine zusätzlich Zeit kostet. Dort gilt der Satz von Giffler & Thompson nicht mehr: Mit Rüstzeiten kann auch der Suchraum der aktiven Zeitpläne das Optimum verfehlen (in Stichproben gegen eine Vollaufzählung um einige Prozent darüber).
         """
     )
 
@@ -281,7 +281,7 @@ $C^*$ auf ihrer Maschine $M^*$ finden; alle Operationen, die $M^*$ ebenfalls bra
 könnten, bilden den Konfliktsatz; eine Prioritätsregel wählt daraus.
 
 **Satz (Giffler & Thompson 1960).** Die Menge aller so konstruierbaren aktiven Zeitpläne enthält mindestens
-einen optimalen Zeitplan - ein Beweis über den SUCHRAUM, nicht über eine bestimmte Regel.
+einen optimalen Zeitplan - ein Beweis über den SUCHRAUM, nicht über eine bestimmte Regel. Der Satz gilt ohne Rüstzeiten (Vehikel Neutral); mit Rüstzeiten (Vehikel Werkstatt/Logistik) kann auch der Suchraum der aktiven Zeitpläne das Optimum verfehlen.
 
 **MWKR** (Most Work Remaining): Priorität nach der Summe der noch ausstehenden Bearbeitungszeiten des Auftrags
 (die aktuelle Operation und alle folgenden) - empirisch eine der besten einfachen Regeln für $C_{\max}$ im Job

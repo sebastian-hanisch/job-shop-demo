@@ -87,14 +87,18 @@ Rüstzeit und Anzahl Familien), Seed der Instanz (+ 🎲), Seed der Kette (+ �
 ## Was nicht funktioniert hat / Grenzen
 
 - **Vorab-Annahme: "SPT, die Wurzel dieser Linie, bleibt zumindest eine brauchbare Regel"** - **klar widerlegt**:
-  SPT schneidet im Standardfall 44 % schlechter ab als MWKR und sogar systematisch schlechter als die naive
+  SPT liegt im Standardfall 44 % über MWKR (Cmax) und sogar systematisch schlechter als die naive
   FIFO-Regel. Grund: SPT optimiert für $\sum C_j$ (viele kurze Aufträge schnell durchschleusen), aber $C_{\max}$
   bestraft genau das Gegenteil - ein langer Auftrag, der bis zuletzt liegen bleibt, verlängert die gesamte
   Durchlaufzeit. Ein Modellwechsel kann eine einst beweisbar optimale Regel zu einer der schlechtesten machen.
 - **Vorab-Vermutung: "MWKR ist auf dem neutralen Vehikel immer mindestens so gut wie SPT/FIFO/Zufall" (wie bei
   Stück 1-4/6)** - **widerlegt** (wie schon bei `lpt-scheduling-demo`): MWKR kann sogar OHNE Rüstzeiten
-  schlechter abschneiden als FIFO (n=6, m=3, Seed 2: -20,4 %). Der Giffler-Thompson-Beweis gilt für den
+  schlechter abschneiden als FIFO (n=6, m=3, Seed 2: Cmax von FIFO 20,4 % unter dem von MWKR). Der Giffler-Thompson-Beweis gilt für den
   SUCHRAUM aktiver Zeitpläne, nicht für MWKR als Regel gegenüber einer bestimmten anderen Regel.
+- **Der Giffler-Thompson-Satz gilt nur OHNE Rüstzeiten**: auf dem Werkstatt/Logistik-Vehikel kann auch die volle
+  Verzweigung über alle aktiven Zeitpläne das Optimum verfehlen (Stichprobe gegen eine Vollaufzählung aller
+  Maschinenfolgen bzw. CP-SAT: 23 von 400 kleinen Instanzen, im Mittel 2,8 %, höchstens 9,2 % darüber; Gegenbeispiel
+  n=3, m=4, Seed 710865, 2 Familien, Rüstzeit 30: 256 statt 247 - als Test hinterlegt).
 - **Die volle Verzweigung über aktive Zeitpläne explodiert unvorhersehbar** - n=6/m=4 dauert unter 3 Sekunden,
   n=7/m=4 kann über 100 Sekunden brauchen. Der Beweis-Check ist deshalb FEST auf n≤6 bei 3 Maschinen begrenzt,
   unabhängig vom Maschinen-Regler der App (mit einem Sicherheitsnetz `max_leaves` im Code).
